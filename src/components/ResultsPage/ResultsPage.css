@@ -1,0 +1,108 @@
+.results-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;     /* keep horizontal centering */
+  align-items: flex-start;     /* push content to the top */
+  overflow-y: auto;            /* enable scrolling */
+  background-color: #fce7f3;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+
+.results-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 32rem;
+  text-align: center;
+  border: 1px solid #fbcfe8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.restart-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  background-color: #ec4899;
+  color: white;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.restart-btn:hover {
+  background-color: #db2777;
+  transform: scale(1.05);
+}
+
+/* -------- ADDED BELOW THIS LINE -------- */
+
+/* Pretty average time box */
+.avg-time-box {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fce7f3;
+  border: 1px solid #fbcfe8;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  color: #4a044e;
+}
+
+/* Questions list section */
+.questions-section {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.questions-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: #4a044e;
+}
+
+.questions-list {
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #fbcfe8;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.placeholder {
+  color: #a1a1aa;
+  font-style: italic;
+}
+
+.question-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  text-align: right;     /* Align all text to the right */
+  direction: rtl;        /* Right-to-left text flow */
+}
+
+.question-item p {
+  margin: 0.2rem 0;
+  color: #4a044e;
+}
+
+.question-item hr {
+  border: none;
+  border-top: 1px solid #fbcfe8;
+  margin-top: 0.75rem;
+}
+
+.questions-section h2 {
+  text-align: right; 
+  direction: rtl;        
+}

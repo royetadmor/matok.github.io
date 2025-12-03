@@ -1,0 +1,68 @@
+/* QuizPage.css */
+
+.quiz-container {
+  height: 100vh; /* full viewport height */
+  width: 100vw;  /* full viewport width */
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+  background-color: #fce7f3; /* pink-100 */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.quiz-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;           /* responsive width */
+  max-width: 28rem;     /* constrain card width */
+  text-align: center;
+  border: 1px solid #fbcfe8; /* pink-200 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.quiz-question {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Buttons */
+
+.true-btn,
+.false-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+  color: white;
+}
+
+.true-btn {
+  background-color: #10b981; /* green-500 */
+}
+
+.true-btn:hover {
+  background-color: #059669;
+  transform: scale(1.05);
+}
+
+.false-btn {
+  background-color: #ef4444; /* red-500 */
+}
+
+.false-btn:hover {
+  background-color: #dc2626;
+  transform: scale(1.05);
+}
