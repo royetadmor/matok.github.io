@@ -10,62 +10,66 @@ type QuizPageProps = {
 export default function QuizPage({ questions, onFinish }: QuizPageProps) {
   const [index, setIndex] = useState(0);
   const [startTime, setStartTime] = useState(Date.now());
-  const [stats, setStats] = useState<any[]>([]);
+  const [stats, setStats] = useState<QuizStats[]>([]);
+  const [fade, setFade] = useState(true); // <-- new fade state
 
   const currentQuestion = questions[index];
 
   const answer = (value: boolean) => {
     const endTime = Date.now();
     const elapsed = endTime - startTime;
+
     let isWrong;
-    if((value && currentQuestion.type === "Word") || !value && currentQuestion.type !== "Word") {
-        isWrong = false;
-    }
-    else {
-        isWrong = true;
+    if ((value && currentQuestion.type === "Word") || (!value && currentQuestion.type !== "Word")) {
+      isWrong = false;
+    } else {
+      isWrong = true;
     }
 
-    const record = {
+    const record: QuizStats = {
       questionId: currentQuestion.id,
       timeMs: elapsed,
       answer: value,
-      isWrong: isWrong,
+      isWrong,
       questionType: currentQuestion.type,
-      questionText: currentQuestion.text
+      questionText: currentQuestion.text,
     };
 
-    setStats((prev) => [...prev, record]);
+    // Start fade-out
+    setFade(false);
 
-    if (index + 1 < questions.length) {
-      setIndex(index + 1);
-      setStartTime(Date.now());
-    } else {
-      onFinish([...stats, record]);
-    }
+    setTimeout(() => {
+      setStats((prev) => [...prev, record]);
+
+      if (index + 1 < questions.length) {
+        setIndex(index + 1);
+        setStartTime(Date.now());
+        setFade(true); // fade-in next question
+      } else {
+        onFinish([...stats, record]);
+      }
+    }, 200); // duration matches CSS transition
   };
 
-  // Add keyboard event listener
+  // Keyboard bindings
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") {
         answer(true);
       } else if (e.key === "ArrowLeft") {
-        answer(false); 
+        answer(false);
       }
     };
 
     window.addEventListener("keydown", handleKey);
-
-    return () => {
-      window.removeEventListener("keydown", handleKey);
-    };
+    return () => window.removeEventListener("keydown", handleKey);
   }, [index, startTime, questions, stats]);
 
   if (!currentQuestion) return <p>Loading...</p>;
 
   return (
     <div className="quiz-container">
-      <div className="quiz-card">
+      <div className={`quiz-card ${fade ? "fade-in" : "fade-out"}`}>
         <div className="quiz-question">{currentQuestion.text}</div>
 
         <div className="button-row">

@@ -4,7 +4,7 @@ import type { QuestionFromExcel } from "../types/types";
 
 
 export async function loadQuestionsFromExcel(): Promise<QuestionFromExcel[]> {
-  const resp = await fetch("/questions.xlsx");
+  const resp = await fetch("/matok.github.io/questions.xlsx");
   const arrayBuffer = await resp.arrayBuffer();
   const workbook = XLSX.read(arrayBuffer, { type: "array" });
   const sheet = workbook.Sheets[workbook.SheetNames[0]];

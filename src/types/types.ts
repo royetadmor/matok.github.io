@@ -5,7 +5,7 @@ export type QuestionFromExcel = {
 };
 
 export type QuizStats = {
-  questionId: string;
+  questionId: number;
   answer: boolean;
   timeMs: number;
   isWrong: boolean;
