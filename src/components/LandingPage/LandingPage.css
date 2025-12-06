@@ -83,5 +83,9 @@
   transition: opacity 0.2s ease-out;
 }
 .true-btn, .false-btn {
-  margin-bottom: 1rem; /* vertical spacing */
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  min-width: 90px;
 }
